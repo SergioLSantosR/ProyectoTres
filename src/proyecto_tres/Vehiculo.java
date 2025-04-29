@@ -8,6 +8,8 @@ public class Vehiculo {
     
     private void eliminarVehiculo(){}
     
+    private void mostrarVehiculo(){}
+    
     
     
 }
