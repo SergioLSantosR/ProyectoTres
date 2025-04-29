@@ -2,13 +2,13 @@ package proyecto_tres;
 
 public class Vehiculo {
     
-    private void agregarVehiculo(){}
+    public void agregarVehiculo(){}
     
-    private void buscarVehiculo(){}
+    public void buscarVehiculo(){}
     
-    private void eliminarVehiculo(){}
+    public void eliminarVehiculo(){}
     
-    private void mostrarVehiculo(){}
+    public void mostrarVehiculo(){}
     
     
     
