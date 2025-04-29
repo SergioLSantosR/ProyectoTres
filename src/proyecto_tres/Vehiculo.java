@@ -1,4 +1,6 @@
 package proyecto_tres;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Vehiculo {
     
