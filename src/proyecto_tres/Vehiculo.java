@@ -4,6 +4,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Vehiculo {
+    String placa;
+    String color;
+    String linea;
+    String propietario;
     
     public void agregarVehiculo(){}
     
