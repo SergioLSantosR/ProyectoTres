@@ -1,4 +1,3 @@
-
 package proyecto_tres;
 import javax.swing.JOptionPane;
 
@@ -26,7 +25,7 @@ public class Lista {
         }
     }
 
-    public Nodo buscarPlaca(String placa) {
+    public Nodo buscarPorPlaca(String placa) {
         Nodo temp = inicio;
         while (temp != null) {
             if (temp.vehiculo.getPlaca().equals(placa)) {
@@ -37,9 +36,41 @@ public class Lista {
         return null;
     }
 
-     
+    public Nodo buscarPorModelo(String modelo) {
+        Nodo temp = inicio;
+        while (temp != null) {
+            if (temp.vehiculo.getModelo().equals(modelo)) {
+                return temp;
+            }
+            temp = temp.siguiente;
+        }
+        return null;
+    }
+
+    public Nodo buscarPorPropietario(String propietario) {
+        Nodo temp = inicio;
+        while (temp != null) {
+            if (temp.vehiculo.getPropietario().equals(propietario)) {
+                return temp;
+            }
+            temp = temp.siguiente;
+        }
+        return null;
+    }
+
+    public Nodo buscarPorLinea(String linea) {
+        Nodo temp = inicio;
+        while (temp != null) {
+            if (temp.vehiculo.getLinea().equals(linea)) {
+                return temp;
+            }
+            temp = temp.siguiente;
+        }
+        return null;
+    }
+
     public void eliminar(String placa) {
-        Nodo nodo = buscarPlaca(placa);
+        Nodo nodo = buscarPorPlaca(placa);
         if (nodo != null) {
             if (nodo.anterior != null) {
                 nodo.anterior.siguiente = nodo.siguiente;
