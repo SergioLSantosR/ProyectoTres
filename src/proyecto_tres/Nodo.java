@@ -1,14 +1,18 @@
 package proyecto_tres;
 
 public class Nodo {
+    Vehiculo vehiculo;
     Nodo siguiente;
     Nodo anterior;
-    String dato;
+    Nodo arriba;
+    Nodo abajo;
     
-    public Nodo(String dato){
-        this.dato = dato;
-        siguiente = null;
-        anterior = null;
+    public Nodo(Vehiculo vehiculo){
+        this.vehiculo = vehiculo;
+        this.siguiente = null;
+        this.anterior = null;
+        this.arriba = null;
+        this.abajo = null;
         
     }
     
