@@ -7,15 +7,10 @@ public class Vehiculo {
     String placa;
     String color;
     String linea;
+    String modelo;
     String propietario;
     
-    public void agregarVehiculo(){}
     
-    public void buscarVehiculo(){}
-    
-    public void eliminarVehiculo(){}
-    
-    public void mostrarVehiculo(){}
     
     
     
