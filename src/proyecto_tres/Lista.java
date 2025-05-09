@@ -5,81 +5,92 @@ import javax.swing.JOptionPane;
 public class Lista {
 
     
-    private Nodo inicio;
+    private Nodo[][] matriz;
+    private int filas;
+    private int columnas;
 
-    public Lista() {
-        inicio = null;
+    public Lista(int filas, int columnas) {
+        this.filas = filas;
+        this.columnas = columnas;
+        matriz = new Nodo[filas][columnas];
     }
 
-    public void insertar(Vehiculo vehiculo) {
-        Nodo nuevo = new Nodo(vehiculo);
-        if (inicio == null) {
-            inicio = nuevo;
-        } else {
-            Nodo temp = inicio;
-            while (temp.siguiente != null) {
-                temp = temp.siguiente;
+    public void insertar(int fila, int columna, Vehiculo vehiculo) {
+        if (fila < filas && columna < columnas) {
+            Nodo nuevo = new Nodo(vehiculo);
+            matriz[fila][columna] = nuevo;
+            if (fila > 0) {
+                matriz[fila][columna].arriba = matriz[fila - 1][columna];
+                matriz[fila - 1][columna].abajo = matriz[fila][columna];
             }
-            temp.siguiente = nuevo;
-            nuevo.anterior = temp;
+            if (columna > 0) {
+                matriz[fila][columna].anterior = matriz[fila][columna - 1];
+                matriz[fila][columna - 1].siguiente = matriz[fila][columna];
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Índices fuera de rango.");
         }
     }
 
+    
     public Nodo buscarPorPlaca(String placa) {
-        Nodo temp = inicio;
-        while (temp != null) {
-            if (temp.vehiculo.getPlaca().equals(placa)) {
-                return temp;
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                if (matriz[i][j] != null && matriz[i][j].vehiculo.getPlaca().equals(placa)) {
+                    return matriz[i][j];
+                }
             }
-            temp = temp.siguiente;
         }
         return null;
     }
-
+    
     public Nodo buscarPorModelo(String modelo) {
-        Nodo temp = inicio;
-        while (temp != null) {
-            if (temp.vehiculo.getModelo().equals(modelo)) {
-                return temp;
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                if (matriz[i][j] != null && matriz[i][j].vehiculo.getModelo().equals(modelo)) {
+                    return matriz[i][j];
+                }
             }
-            temp = temp.siguiente;
         }
         return null;
     }
 
     public Nodo buscarPorPropietario(String propietario) {
-        Nodo temp = inicio;
-        while (temp != null) {
-            if (temp.vehiculo.getPropietario().equals(propietario)) {
-                return temp;
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                if (matriz[i][j] != null && matriz[i][j].vehiculo.getPropietario().equals(propietario)) {
+                    return matriz[i][j];
+                }
             }
-            temp = temp.siguiente;
         }
         return null;
     }
 
     public Nodo buscarPorLinea(String linea) {
-        Nodo temp = inicio;
-        while (temp != null) {
-            if (temp.vehiculo.getLinea().equals(linea)) {
-                return temp;
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                if (matriz[i][j] != null && matriz[i][j].vehiculo.getLinea().equals(linea)) {
+                    return matriz[i][j];
+                }
             }
-            temp = temp.siguiente;
         }
         return null;
     }
 
-    public void eliminar(String placa) {
-        Nodo nodo = buscarPorPlaca(placa);
+    public void eliminarPorModelo(String modelo) {
+        Nodo nodo = buscarPorModelo(modelo);
         if (nodo != null) {
+            if (nodo.arriba != null) {
+                nodo.arriba.abajo = nodo.abajo;
+            }
+            if (nodo.abajo != null) {
+                nodo.abajo.arriba = nodo.arriba;
+            }
             if (nodo.anterior != null) {
                 nodo.anterior.siguiente = nodo.siguiente;
             }
             if (nodo.siguiente != null) {
                 nodo.siguiente.anterior = nodo.anterior;
-            }
-            if (nodo == inicio) {
-                inicio = nodo.siguiente;
             }
             nodo = null;
             JOptionPane.showMessageDialog(null, "Vehículo eliminado.");
@@ -88,15 +99,64 @@ public class Lista {
         }
     }
 
-    public void mostrar() {
-        Nodo temp = inicio;
-        StringBuilder sb = new StringBuilder();
-        while (temp != null) {
-            sb.append(temp.vehiculo.toString()).append("\n");
-            temp = temp.siguiente;
+    public void eliminarPorPropietario(String propietario) {
+        Nodo nodo = buscarPorPropietario(propietario);
+        if (nodo != null) {
+            if (nodo.arriba != null) {
+                nodo.arriba.abajo = nodo.abajo;
+            }
+            if (nodo.abajo != null) {
+                nodo.abajo.arriba = nodo.arriba;
+            }
+            if (nodo.siguiente != null) {
+                nodo.siguiente.anterior = nodo.anterior;
+            }
+            if (nodo.anterior != null) {
+                nodo.anterior.siguiente = nodo.siguiente;
+            }
+            nodo = null;
+            JOptionPane.showMessageDialog(null, "Vehículo eliminado.");
+        } else {
+            JOptionPane.showMessageDialog(null, "Vehículo no encontrado.");
         }
-        JOptionPane.showMessageDialog(null, sb.toString());
     }
 
+    public void eliminarPorLinea(String linea) {
+        Nodo nodo = buscarPorLinea(linea);
+        if (nodo != null) {
+            if (nodo.arriba != null) {
+                nodo.arriba.abajo = nodo.abajo;
+            }
+            if (nodo.abajo != null) {
+                nodo.abajo.arriba = nodo.arriba;
+            }
+            if (nodo.siguiente != null) {
+                nodo.siguiente.anterior = nodo.anterior;
+            }
+            if (nodo.siguiente != null) {
+                nodo.siguiente.anterior = nodo.anterior;
+            }
+            nodo = null;
+            JOptionPane.showMessageDialog(null, "Vehículo eliminado.");
+        } else {
+            JOptionPane.showMessageDialog(null, "Vehículo no encontrado.");
+        }
+    }
+    
+    public void mostrar() { 
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < columnas; j++) {
+            if (matriz[i][j] != null) {
+                sb.append(matriz[i][j].toString());
+            } else {
+                sb.append("null");
+            }
+            sb.append("\t"); // tabulador para separación
+        }
+        sb.append("\n"); // salto de línea por fila
+    }
+    System.out.println(sb.toString());
+}
     
 }
