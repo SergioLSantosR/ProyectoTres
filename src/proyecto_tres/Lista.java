@@ -64,8 +64,6 @@ public class Lista {
             System.out.println(temp.vehiculo);
             temp = temp.siguiente;
         }
-    }
-
-    
+    }  
     
 }
