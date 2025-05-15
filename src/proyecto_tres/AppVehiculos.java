@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 public class AppVehiculos {
     static MatrizOrtogonal matriz = new MatrizOrtogonal();
+    
+    //Método principal
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(AppVehiculos::menuPrincipal);
@@ -40,24 +42,7 @@ public class AppVehiculos {
         frame.setVisible(true);
     }
 
-//    public static void insertarVehiculo() {
-//        try {
-//            int fila = Integer.parseInt(JOptionPane.showInputDialog("Fila (0-9):"));
-//            int col = Integer.parseInt(JOptionPane.showInputDialog("Columna (0-9):"));
-//            String placa = JOptionPane.showInputDialog("Placa:");
-//            String color = JOptionPane.showInputDialog("Color:");
-//            String linea = JOptionPane.showInputDialog("Línea:");
-//            int modelo = Integer.parseInt(JOptionPane.showInputDialog("Modelo:"));
-//            String propietario = JOptionPane.showInputDialog("Propietario:");
-//
-//            Vehiculo v = new Vehiculo(placa, color, linea, modelo, propietario);
-//            matriz.insertar(fila, col, v);
-//            JOptionPane.showMessageDialog(null, "Vehículo insertado.");
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, "Datos inválidos.");
-//        }
-//    }
-    
+
     public static void insertarVehiculo() {
     try {
         String placa = JOptionPane.showInputDialog("Placa:");
