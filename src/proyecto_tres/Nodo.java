@@ -1,20 +1,14 @@
 package proyecto_tres;
 
-public class Nodo {
+class Nodo {
+    int fila, columna;
     Vehiculo vehiculo;
-    Nodo siguiente;
-    Nodo anterior;
-    Nodo arriba;
-    Nodo abajo;
-    
-    public Nodo(Vehiculo vehiculo){
+    Nodo arriba, abajo, izquierda, derecha;
+
+    public Nodo(int fila, int columna, Vehiculo vehiculo) {
+        this.fila = fila;
+        this.columna = columna;
         this.vehiculo = vehiculo;
-        this.siguiente = null;
-        this.anterior = null;
-        this.arriba = null;
-        this.abajo = null;
-        
     }
-    
 }
 
