@@ -2,12 +2,12 @@ package proyecto_tres;
 import javax.swing.JOptionPane;
 
 //esta clase contiene a la lista ortogonal
-public class Lista {
+public class MatrizOrtogonal {
     
     
     Nodo inicio;
 
-    public Lista() {
+    public MatrizOrtogonal() {
         inicio = null;
     }
 
@@ -64,7 +64,6 @@ public class Lista {
             System.out.println(temp.vehiculo);
             temp = temp.siguiente;
         }
-    }
-
-
+    }  
+    
 }

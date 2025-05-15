@@ -1,10 +1,10 @@
 package proyecto_tres;
 import javax.swing.JOptionPane;
-public class Proyecto_Tres {
+public class AppVehiculos {
 
     public static void main(String[] args) {
         
-        Lista matriz = new Lista();
+        MatrizOrtogonal matriz = new MatrizOrtogonal();
         String[] opciones = {"Insertar Vehículo", "Buscar Vehículo", "Eliminar Vehículo", "Mostrar Vehículos", "Salir"};
         int opcion;
         do {
@@ -56,6 +56,6 @@ public class Proyecto_Tres {
         
      
         
-} 
+}
     
 
