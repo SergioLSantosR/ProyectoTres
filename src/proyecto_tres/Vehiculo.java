@@ -1,4 +1,6 @@
-package proyecto_tres;class Vehiculo {
+package proyecto_tres;
+
+class Vehiculo {
     String placa, color, linea, propietario;
     int modelo;
 
