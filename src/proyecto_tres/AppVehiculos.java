@@ -3,6 +3,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class AppVehiculos {
     static MatrizOrtogonal matriz = new MatrizOrtogonal();
@@ -18,6 +20,8 @@ public class AppVehiculos {
         frame.setSize(400, 300);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new GridLayout(5, 1));
+        frame.setLocationRelativeTo(null);
+        
 
         JButton btnInsertar = new JButton("Insertar Vehículo");
         JButton btnBuscar = new JButton("Buscar Vehículo");
